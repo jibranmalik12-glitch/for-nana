@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>For Nana 💖</title>
+
 <style>
   :root{
     --bg1:#ffd6e7; --bg2:#fff1f6; --card:#ffffffcc;
@@ -16,19 +17,25 @@
     background: radial-gradient(circle at top, var(--bg2), var(--bg1));
     display:flex; align-items:center; justify-content:center;
   }
+
   .glow{
     position:fixed; inset:-20%;
     background:
       radial-gradient(circle at 20% 20%, rgba(255,77,141,.22), transparent 55%),
       radial-gradient(circle at 80% 30%, rgba(255,121,168,.20), transparent 55%),
       radial-gradient(circle at 60% 85%, rgba(255,77,141,.16), transparent 55%);
-    filter: blur(10px); pointer-events:none; opacity:.9;
+    filter: blur(10px);
+    pointer-events:none;
+    opacity:.9;
   }
 
   .wrap{
     width:min(980px,94vw);
-    display:grid; grid-template-columns: 1fr;
-    gap:14px; position:relative; z-index:2;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:14px;
+    position:relative;
+    z-index:2;
   }
 
   .card{
@@ -40,46 +47,94 @@
     backdrop-filter: blur(10px);
   }
 
-  h1{margin:0 0 10px; color:#b30059; font-size: clamp(24px, 4vw, 34px)}
+  h1{
+    margin:0 0 10px;
+    color:#b30059;
+    font-size: clamp(24px, 4vw, 34px);
+    line-height:1.15;
+  }
   .sub{margin:0 0 10px; opacity:.86; line-height:1.55}
   .status{margin:0; opacity:.85; line-height:1.45; font-size:14px}
 
   .names{
-    display:inline-flex; gap:10px; align-items:center;
-    padding:10px 12px; border-radius:999px;
+    display:inline-flex;
+    gap:10px;
+    align-items:center;
+    padding:10px 12px;
+    border-radius:999px;
     background:rgba(255,255,255,.65);
     border:1px solid rgba(255,255,255,.9);
     margin: 8px 0 12px;
   }
   .pill{
-    padding:6px 10px; border-radius:999px;
+    padding:6px 10px;
+    border-radius:999px;
     background: linear-gradient(135deg, var(--pink), var(--pink2));
-    color:#fff; font-weight:900; font-size:14px;
+    color:#fff;
+    font-weight:900;
+    font-size:14px;
   }
 
-  .btnRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+  .btnRow{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:12px;
+  }
   button{
-    border:0; padding:12px 14px; border-radius:14px;
-    font-weight:900; cursor:pointer; font-size:15px;
+    border:0;
+    padding:12px 14px;
+    border-radius:14px;
+    font-weight:900;
+    cursor:pointer;
+    font-size:15px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
-  .yes{background: linear-gradient(135deg, var(--pink), var(--pink2)); color:#fff; flex:1}
-  .no{background: rgba(0,0,0,.07); flex:1}
+  .yes{
+    background: linear-gradient(135deg, var(--pink), var(--pink2));
+    color:#fff;
+    flex:1;
+  }
+  .no{
+    background: rgba(0,0,0,.07);
+    flex:1;
+  }
 
+  /* ✅ FIX: lock gif area so tall gifs never stretch the page */
   .gifBox{
-    border-radius:18px; overflow:hidden;
+    width:100%;
+    height:320px;        /* fixed height on desktop */
+    max-height:60vh;     /* never exceed screen */
+    border-radius:18px;
+    overflow:hidden;
     background: rgba(255,255,255,.75);
     border:1px solid rgba(255,255,255,.9);
     box-shadow: 0 14px 26px rgba(0,0,0,.08);
-    min-height: 260px;
-    display:flex; align-items:center; justify-content:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     position:relative;
   }
-  .gifBox img{width:100%; height:100%; object-fit:cover; display:block}
+
+  /* ✅ Always show full gif inside fixed box */
+  .gifBox img{
+    width:100%;
+    height:100%;
+    object-fit: contain;
+    display:block;
+  }
+
   .gifCaption{
-    position:absolute; bottom:10px; left:10px; right:10px;
-    padding:9px 10px; border-radius:14px;
+    position:absolute;
+    bottom:10px;
+    left:10px;
+    right:10px;
+    padding:9px 10px;
+    border-radius:14px;
     background: rgba(255,255,255,.78);
-    font-weight:900; font-size:13px;
+    font-weight:900;
+    font-size:13px;
   }
 
   .typedWrap{
@@ -90,14 +145,22 @@
     background: rgba(255,255,255,.7);
     border:1px solid rgba(255,255,255,.9);
   }
-  .typed{margin:0; white-space:pre-wrap; line-height:1.7; font-size:15px}
+  .typed{
+    margin:0;
+    white-space:pre-wrap;
+    line-height:1.7;
+    font-size:15px;
+  }
 
   /* Overlay */
   .overlay{
-    position:fixed; inset:0;
+    position:fixed;
+    inset:0;
     background: rgba(255,214,231,.60);
     backdrop-filter: blur(10px);
-    display:flex; align-items:center; justify-content:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     z-index:9999;
   }
   .envelopeCard{
@@ -111,9 +174,10 @@
   }
   .envelopeTitle{margin:0 0 8px; color:#b30059; font-weight:1000; font-size:20px}
   .envelopeSub{margin:0 0 14px; opacity:.85; line-height:1.55; font-size:14.5px}
+
   .env{
-    width: 210px; height: 140px;
-    margin: 10px auto 14px;
+    width:210px; height:140px;
+    margin:10px auto 14px;
     position:relative;
     border-radius:14px;
     background: linear-gradient(135deg, #fff, #ffe6f0);
@@ -132,9 +196,12 @@
   }
   .env.open .flap{ transform: rotateX(175deg); }
   .env .seal{
-    position:absolute; width:34px; height:34px; border-radius:999px;
+    position:absolute;
+    width:34px; height:34px;
+    border-radius:999px;
     background: radial-gradient(circle at 30% 30%, #fff, #ff79a8);
-    left:50%; top:58%; transform:translate(-50%,-50%);
+    left:50%; top:58%;
+    transform:translate(-50%,-50%);
     box-shadow:0 12px 22px rgba(255,77,141,.25);
   }
 
@@ -153,7 +220,8 @@
 
   /* Floating hearts */
   .heart{
-    position:absolute; width:14px; height:14px;
+    position:absolute;
+    width:14px; height:14px;
     background: var(--pink);
     transform: rotate(45deg);
     opacity:.25;
@@ -178,70 +246,75 @@
   @media (max-width:520px){
     body{align-items:flex-start; padding:14px 10px 22px;}
     .wrap{width:100%;}
-    .gifBox{min-height:240px;}
+    .gifBox{height:260px;}   /* fixed height on mobile */
   }
 </style>
 </head>
+
 <body>
-  <div class="glow"></div>
+<div class="glow"></div>
 
-  <!-- Overlay -->
-  <div class="overlay" id="overlay">
-    <div class="envelopeCard">
-      <p class="envelopeTitle">A tiny love letter for Nana 💌</p>
-      <p class="envelopeSub">
-        Tap the envelope (or button) to open it…  🎶
-      </p>
+<!-- Overlay -->
+<div class="overlay" id="overlay">
+  <div class="envelopeCard">
+    <p class="envelopeTitle">A tiny love letter for Nana 💌</p>
+    <p class="envelopeSub">
+      Tap the envelope (or button) to open it… and start music 🎶<br/>
+      (Offline music file: <b>music.mp3</b>)
+    </p>
 
-      <div class="env" id="env" onclick="startExperience()" ontouchstart="startExperience()">
-        <div class="flap"></div>
-        <div class="seal"></div>
-      </div>
+    <div class="env" id="env" onclick="startExperience()" ontouchstart="startExperience()">
+      <div class="flap"></div>
+      <div class="seal"></div>
+    </div>
 
-      <div class="startBtn" id="startBtn" onclick="startExperience()" ontouchstart="startExperience()">
-        Open & Start 💖
-      </div>
+    <div class="startBtn" id="startBtn" onclick="startExperience()" ontouchstart="startExperience()">
+      Open & Start 💖
+    </div>
 
-      <p class="hint">Juju → Nana</p>
-      <p class="hint" id="debug" style="font-weight:900;"></p>
+    <p class="hint">Juju → Nana</p>
+  </div>
+</div>
+
+<div class="wrap">
+  <!-- Question Card (removed on YES) -->
+  <div class="card" id="questionCard">
+    <h1>Nana, will you be my Valentine? 💘</h1>
+
+    <div class="names">
+      <span class="pill">Nana</span>
+      <span class="pill">Juju</span>
+    </div>
+
+    <p class="sub">If I could explain what you mean to me in one sentence… it still wouldn’t be enough. 🌸</p>
+
+    <div class="btnRow">
+      <button class="yes" id="yesBtn">Yes 😘</button>
+      <button class="no" id="noBtn">No 🙈</button>
     </div>
   </div>
 
-  <div class="wrap">
-    <div class="card" id="questionCard">
-      <h1>Nana, will you be my Valentine? 💘</h1>
-
-      <div class="names">
-        <span class="pill">Nana</span>
-        <span class="pill">Juju</span>
-      </div>
-
-      <p class="sub">I want to make you feel that you are special. 🌸</p>
-      <p class="status" id="statusText">Tap Open & Start first, then choose 😌</p>
-
-      <div class="btnRow">
-        <button class="yes" id="yesBtn">Yes 😘</button>
-        <button class="no" id="noBtn">No 🙈</button>
-      </div>
+  <!-- GIF + Typed message -->
+  <div class="card">
+    <div class="gifBox" id="gifBox">
+      <img id="gifImg" alt="gif" />
+      <div class="gifCaption" id="gifCaption">Just… don’t make me too nervous 😳</div>
     </div>
 
-    <div class="card">
-      <div class="gifBox" id="gifBox">
-        <img id="gifImg" alt="gif" />
-        <div class="gifCaption" id="gifCaption">Just… don’t make me too nervous 😳</div>
-      </div>
-
-      <div class="typedWrap" id="typedWrap">
-        <p class="typed" id="typedText"></p>
-      </div>
+    <div class="typedWrap" id="typedWrap">
+      <p class="typed" id="typedText"></p>
     </div>
   </div>
+</div>
 
-  <audio id="bgMusic" preload="auto" loop>
-    <source src="music.mp3" type="audio/mpeg">
-  </audio>
+<audio id="bgMusic" preload="auto" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
 
 <script>
+  // Local files in same folder:
+  // initial.gif, sad1.gif, sad2.gif, sad3.gif, sad4.gif, kiss.gif, music.mp3
+
   const gifs = {
     initial: { url: "initial.gif", caption: "Say yes… softly 😳" },
     sad: [
@@ -250,13 +323,12 @@
       { url: "sad3.gif", caption: "It’s getting sadder… 😢" },
       { url: "sad4.gif", caption: "Okay… I’m officially broken 😭" }
     ],
-    kiss: { url: "kiss.gif", caption: "Yayy, You said yes my Princess 💋" }
+    kiss: { url: "kiss.gif", caption: "You said YES! A kiss for you 💋" }
   };
 
   const overlay = document.getElementById("overlay");
   const env = document.getElementById("env");
-  const debug = document.getElementById("debug");
-
+  const startBtn = document.getElementById("startBtn");
   const music = document.getElementById("bgMusic");
 
   const questionCard = document.getElementById("questionCard");
@@ -279,33 +351,24 @@
   }
   setGif(gifs.initial);
 
-  // ✅ Make it GLOBAL for inline onclick to always work
+  // ✅ Global for inline onclick
   window.startExperience = async function(){
     if(started) return;
     started = true;
 
-    // debug
-    if(debug) debug.textContent = "Opening…";
-
     if(env) env.classList.add("open");
-
-    // Always hide overlay
     overlay.style.display = "none";
 
-    // Try to start music
-    try { await music.play(); } catch(e) {}
-
-    // Remove debug text
-    if(debug) debug.textContent = "";
+    try{ await music.play(); }catch(e){}
   };
 
-  // Extra safety: bind events programmatically too
+  // extra safety binds
   env.addEventListener("click", window.startExperience);
   env.addEventListener("touchstart", window.startExperience, {passive:true});
-  document.getElementById("startBtn").addEventListener("click", window.startExperience);
-  document.getElementById("startBtn").addEventListener("touchstart", window.startExperience, {passive:true});
+  startBtn.addEventListener("click", window.startExperience);
+  startBtn.addEventListener("touchstart", window.startExperience, {passive:true});
 
-  // Hearts background
+  // Floating hearts
   function spawnHeart(){
     const h = document.createElement("div");
     h.className = "heart";
@@ -321,20 +384,21 @@
   }
   setInterval(spawnHeart, 280);
 
-  // NO = cycle sad gifs
+  // NO click = sad gif cycle
   noBtn.addEventListener("click", () => {
     noCount++;
     const idx = Math.min(noCount-1, gifs.sad.length-1);
     setGif(gifs.sad[idx]);
   });
 
-  // YES = remove question page + show final scene
+  // YES click = remove question card + show final
   yesBtn.addEventListener("click", () => {
     setGif(gifs.kiss);
 
     if(questionCard) questionCard.remove();
 
     typedWrap.style.display = "block";
+    typedText.textContent = "";
 
     const msg =
 `Nana… 💞
@@ -347,7 +411,6 @@ Happy Valentine’s Day.
 
 — Juju ❤️`;
 
-    typedText.textContent = "";
     let i = 0;
     const t = setInterval(()=>{
       typedText.textContent += msg[i];
@@ -355,10 +418,8 @@ Happy Valentine’s Day.
       if(i >= msg.length) clearInterval(t);
     }, 25);
 
-    try { music.play(); } catch(e) {}
+    try{ music.play(); }catch(e){}
   });
 </script>
 </body>
 </html>
-
-
