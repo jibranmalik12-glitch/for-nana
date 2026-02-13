@@ -295,7 +295,7 @@
         <p class="typed" id="typedText"></p><span class="cursor" id="cursor">|</span>
       </div>
 
-      <div class="card">
+      <div class="card" id="questionCard">
         <p class="status" style="margin:0;">pure heart, pure love, pure soul. Nana — this is only for you. 💗</p>
       </div>
     </div>
@@ -452,21 +452,30 @@
       }, 22);
     }
 
-    yesBtn.addEventListener("click", () => {
+   yesBtn.addEventListener("click", () => {
 
+  // Change GIF
   setGif(gifs.kiss);
-  statusText.textContent = "You said YES! 😍";
 
+  // Remove the entire top question section
+  document.getElementById("questionCard").style.display = "none";
+
+  // Hide buttons completely
+  yesBtn.style.display = "none";
+  noBtn.style.display = "none";
+  musicBtn.style.display = "none";
+
+  // Optional: hide status text if still visible
+  statusText.style.display = "none";
+
+  // Add glow + confetti
   gifBox.classList.add("yesMoment");
   setTimeout(()=> gifBox.classList.remove("yesMoment"), 1300);
-
   confettiBurst();
 
+  // Make sure music is playing
   if(!musicPlaying){
-    music.play().then(()=>{
-      musicPlaying = true;
-      musicBtn.textContent = "⏸ Music";
-    }).catch(()=>{});
+    music.play().catch(()=>{});
   }
 
   const msg =
@@ -485,14 +494,42 @@ Happy Valentine’s Day, my Nana.
 
   typeMessage(msg);
 
-  /* 🔥 NEW PART — HIDE ALL BUTTONS */
-  yesBtn.style.display = "none";
-  noBtn.style.display = "none";
-  musicBtn.style.display = "none";
-
 });
+✅ What Will Happen Now
+After pressing YES:
+
+The entire question section disappears
+
+Buttons disappear
+
+Only GIF + message remain
+
+Looks like a clean romantic ending screen
+
+Very cinematic. Very intentional.
+
+🔥 If You Want EVEN More Cinematic
+We can:
+
+Center the GIF and message in full screen
+
+Slowly zoom background
+
+Add soft fade transition
+
+Auto scroll to message
+
+Make background blur stronger
+
+Tell me and I’ll convert it into “final scene mode” 😌
+
+
+
+
+
   </script>
 </body>
 </html>
+
 
 
