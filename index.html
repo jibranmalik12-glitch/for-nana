@@ -453,20 +453,23 @@
     }
 
     yesBtn.addEventListener("click", () => {
-      setGif(gifs.kiss);
-      statusText.textContent = "You said YES! 😍";
-      gifBox.classList.add("yesMoment");
-      setTimeout(()=> gifBox.classList.remove("yesMoment"), 1300);
-      confettiBurst();
 
-      if(!musicPlaying){
-        music.play().then(()=>{
-          musicPlaying = true;
-          musicBtn.textContent = "⏸ Music";
-        }).catch(()=>{});
-      }
+  setGif(gifs.kiss);
+  statusText.textContent = "You said YES! 😍";
 
-      const msg =
+  gifBox.classList.add("yesMoment");
+  setTimeout(()=> gifBox.classList.remove("yesMoment"), 1300);
+
+  confettiBurst();
+
+  if(!musicPlaying){
+    music.play().then(()=>{
+      musicPlaying = true;
+      musicBtn.textContent = "⏸ Music";
+    }).catch(()=>{});
+  }
+
+  const msg =
 `Nana… 💞
 
 If love had a calm sound, it would feel like you.
@@ -480,13 +483,16 @@ Happy Valentine’s Day, my Nana.
 
 — Juju ❤️`;
 
-      typeMessage(msg);
+  typeMessage(msg);
 
-      yesBtn.disabled = true;
-      noBtn.disabled = true;
-      noBtn.style.opacity = ".55";
-    });
+  /* 🔥 NEW PART — HIDE ALL BUTTONS */
+  yesBtn.style.display = "none";
+  noBtn.style.display = "none";
+  musicBtn.style.display = "none";
+
+});
   </script>
 </body>
 </html>
+
 
