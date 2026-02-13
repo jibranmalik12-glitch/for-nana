@@ -186,6 +186,59 @@
       40%{filter:drop-shadow(0 0 30px rgba(255,77,141,.45)) drop-shadow(0 0 60px rgba(255,121,168,.28))}
       100%{filter:none}
     }
+    /* ===== Mobile Optimization ===== */
+@media (max-width: 520px){
+  body{
+    align-items:flex-start;
+    padding: 14px 10px 22px;
+  }
+
+  .wrap{
+    width: 100%;
+    grid-template-columns: 1fr;   /* force single column */
+    gap: 12px;
+  }
+
+  .card{
+    padding: 18px 14px;
+    border-radius: 18px;
+  }
+
+  h1{
+    font-size: 24px;
+    line-height: 1.15;
+  }
+
+  .sub{
+    font-size: 14.5px;
+  }
+
+  .btnRow{
+    gap: 10px;
+  }
+
+  /* Buttons fit better on mobile */
+  .btnRow button{
+    flex: 1;
+    min-width: 110px;
+    padding: 12px 12px;
+    font-size: 14.5px;
+  }
+
+  /* GIF area height smaller on mobile */
+  .gifBox{
+    min-height: 240px;
+  }
+
+  .gifCaption{
+    font-size: 13px;
+    padding: 9px 10px;
+  }
+
+  .typed{
+    font-size: 14.5px;
+  }
+}
   </style>
 </head>
 <body>
@@ -208,7 +261,7 @@
       </div>
 
       <button class="startBtn" onclick="startExperience()">Open & Start 💖</button>
-      <p class="hint">Juju → Nana (soft mode only 😌)</p>
+      <p class="hint">Juju → Nana </p>
     </div>
   </div>
 
@@ -217,12 +270,12 @@
       <h1>Nana, will you be my Valentine? 💘</h1>
 
       <div class="names">
-        <span class="pill">Nana</span>
-        <span class="arrow">⇄</span>
         <span class="pill">Juju</span>
+        <span class="arrow">⇄</span>
+        <span class="pill">Nana</span>
       </div>
 
-      <p class="sub">I’m asking gently… because you matter to me in a way I can’t explain in one sentence. 🌸</p>
+      <p class="sub">I am here to make you feel that you are special 🌸</p>
       <p class="status" id="statusText">Tap “Open & Start” first, then choose 😌</p>
 
       <div class="btnRow">
@@ -243,7 +296,7 @@
       </div>
 
       <div class="card">
-        <p class="status" style="margin:0;">Soft hearts, soft music, soft love. Nana — this page exists only for you. 💗</p>
+        <p class="status" style="margin:0;">pure heart, pure love, pure soul. Nana — this is only for you. 💗</p>
       </div>
     </div>
   </div>
@@ -263,7 +316,7 @@
         { url: "sad3.gif", caption: "It’s getting sadder… 😢" },
         { url: "sad4.gif", caption: "Okay… I’m officially broken 😭" }
       ],
-      kiss: { url: "kiss.gif", caption: "You said YES! A kiss for you 💋" }
+      kiss: { url: "kiss.gif", caption: "Yayyyyyy, You said Yes my Princess 💋" }
     };
 
     const overlay = document.getElementById("overlay");
@@ -436,3 +489,4 @@ Happy Valentine’s Day, my Nana.
   </script>
 </body>
 </html>
+
